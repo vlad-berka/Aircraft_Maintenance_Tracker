@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as aircraft from './files/aircraft.json';
+import { displayJsonFile, processData, updateObject } from './files/utils';
+
+// var aircraft_in_memory = [...aircraft];
 
 @Component({
   selector: 'app-root',
@@ -11,6 +14,8 @@ export class AppComponent {
   aircraftList: any = (aircraft as any).default;
 
   ngOnInit(){
-    console.log(aircraft);
+    processData(1);
+    displayJsonFile(this.aircraftList);
+    updateObject(this.aircraftList);
   }
 }
