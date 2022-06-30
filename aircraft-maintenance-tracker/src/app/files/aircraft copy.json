@@ -1,0 +1,80 @@
+[
+  {
+    "AircraftId": 1,
+    "DailyHours": 0.7,
+    "CurrentHours": 550,
+    "Task": [
+      {
+        "ItemNumber": 1,
+        "Description": "Description of Item 1",
+        "LogDate": "2018-04-07T00:00:00",
+        "LogHours": null,
+        "IntervalMonths": null,
+        "IntervalHours": null
+      },
+      {
+        "ItemNumber": 2,
+        "Description": "Description of Item 2",
+        "LogDate": "2018-04-07T00:00:00",
+        "LogHours": 100,
+        "IntervalMonths": 12,
+        "IntervalHours": 500
+      },
+      {
+        "ItemNumber": 3,
+        "Description": "Description of Item 3",
+        "LogDate": "2018-06-01T00:00:00",
+        "LogHours": 150,
+        "IntervalMonths": null,
+        "IntervalHours": 400
+      },
+      {
+        "ItemNumber": 4,
+        "Description": "Description of Item 4",
+        "LogDate": "2018-06-01T00:00:00",
+        "LogHours": 150,
+        "IntervalMonths": 6,
+        "IntervalHours": null
+      }
+    ]
+  },
+  {
+    "AircraftId": 2,
+    "DailyHours": 1.1,
+    "CurrentHours": 200,
+    "Task": [
+      {
+        "ItemNumber": 1,
+        "Description": "Description of Item 1",
+        "LogDate": "2018-04-07T00:00:00",
+        "LogHours": null,
+        "IntervalMonths": null,
+        "IntervalHours": null
+      },
+      {
+        "ItemNumber": 2,
+        "Description": "Description of Item 2",
+        "LogDate": "2018-04-07T00:00:00",
+        "LogHours": 100,
+        "IntervalMonths": 12,
+        "IntervalHours": 500
+      },
+      {
+        "ItemNumber": 3,
+        "Description": "Description of Item 3",
+        "LogDate": "2018-06-01T00:00:00",
+        "LogHours": 150,
+        "IntervalMonths": null,
+        "IntervalHours": 400
+      },
+      {
+        "ItemNumber": 4,
+        "Description": "Description of Item 4",
+        "LogDate": "2018-06-01T00:00:00",
+        "LogHours": 150,
+        "IntervalMonths": 6,
+        "IntervalHours": null
+      }
+    ]
+  }
+]
