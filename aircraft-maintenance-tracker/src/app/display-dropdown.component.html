@@ -293,6 +293,23 @@
   }
 </style>
 
-<display-dropdown></display-dropdown>
-<display-data></display-data>
-<router-outlet></router-outlet>
+<!-- Dropdown Menu -->
+<div style="text-align:center">
+  <h1>
+    Select an Aircraft:
+  </h1>
+
+  <select name="aircraft-dropdown" id="#">
+    <!-- <option selected="selected" value="None"> </option> -->
+    <option *ngFor="let item of aircraftList" id={{item.AircraftId}}> Aircraft ID No. {{item.AircraftId}} </option>
+  </select>
+
+  <section>
+    <div class="example-button-row">
+      <br>
+      <button (click)="clickEventMethod()" mat-stroked-button color="primary" id="test_id">Primary</button>
+      <button mat-stroked-button color="accent">Accent</button>
+      <button mat-stroked-button color="warn">Warn</button>
+    </div>
+  </section>
+</div>

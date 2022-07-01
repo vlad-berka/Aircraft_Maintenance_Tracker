@@ -21,6 +21,10 @@
     margin: 0;
   }
 
+  ul {
+    padding-left: 0;
+  }
+
   .spacer {
     flex: 1;
   }
@@ -293,6 +297,23 @@
   }
 </style>
 
-<display-dropdown></display-dropdown>
-<display-data></display-data>
-<router-outlet></router-outlet>
+<!-- Aircraft Part List -->
+<div style="text-align:center">
+  <h1>
+    Displaying AircraftList from JSON File:
+  </h1>
+  <ul *ngFor="let item of aircraftList" style="list-style-type: none;">
+    <li>
+      <h3>AircraftId: {{item.AircraftId}}, DailyHours: {{item.DailyHours}}, CurrentHours: {{item.CurrentHours}}</h3>
+      <ul *ngFor="let task of item.Task; let i = 'index'">
+        ItemNumber: {{item.Task[i].ItemNumber}} <br>
+        Description: {{item.Task[i].Description}} <br>
+        LogDate: {{item.Task[i].LogDate}} <br>
+        LogHours: {{item.Task[i].LogHours}} <br>
+        IntervalMonths: {{item.Task[i].IntervalMonths}} <br>
+        IntervalHours: {{item.Task[i].IntervalHours}} <br>
+        ----------------------------------------------------- <br>
+      </ul>
+    </li>
+  </ul>
+</div>
