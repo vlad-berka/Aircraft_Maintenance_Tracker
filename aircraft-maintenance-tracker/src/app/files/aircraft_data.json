@@ -6,7 +6,7 @@
     "Task": [
       {
         "ItemNumber": 1,
-        "Description": "Description of Item 1",
+        "Description": "Item 1",
         "LogDate": "2018-04-07T00:00:00.000Z",
         "LogHours": null,
         "IntervalMonths": null,
@@ -14,7 +14,7 @@
       },
       {
         "ItemNumber": 2,
-        "Description": "Description of Item 2",
+        "Description": "Item 2",
         "LogDate": "2018-04-07T00:00:00.000Z",
         "LogHours": 100,
         "IntervalMonths": 12,
@@ -22,7 +22,7 @@
       },
       {
         "ItemNumber": 3,
-        "Description": "Description of Item 3",
+        "Description": "Item 3",
         "LogDate": "2018-06-01T00:00:00.000Z",
         "LogHours": 150,
         "IntervalMonths": null,
@@ -30,7 +30,7 @@
       },
       {
         "ItemNumber": 4,
-        "Description": "Description of Item 4",
+        "Description": "Item 4",
         "LogDate": "2018-06-01T00:00:00.000Z",
         "LogHours": 150,
         "IntervalMonths": 6,
@@ -45,34 +45,34 @@
     "Task": [
       {
         "ItemNumber": 1,
-        "Description": "Description of Item 1",
+        "Description": "Item 1",
         "LogDate": "2018-04-07T00:00:00.000Z",
+        "LogHours": null,
+        "IntervalMonths": 10,
+        "IntervalHours": null
+      },
+      {
+        "ItemNumber": 2,
+        "Description": "Item 2",
+        "LogDate": "2018-04-07T00:00:00.000Z",
+        "LogHours": 50,
+        "IntervalMonths": 8,
+        "IntervalHours": 55
+      },
+      {
+        "ItemNumber": 3,
+        "Description": "Item 3",
+        "LogDate": "2018-06-01T00:00:00.000Z",
         "LogHours": null,
         "IntervalMonths": null,
         "IntervalHours": null
       },
       {
-        "ItemNumber": 2,
-        "Description": "Description of Item 2",
-        "LogDate": "2018-04-07T00:00:00.000Z",
-        "LogHours": 100,
-        "IntervalMonths": 12,
-        "IntervalHours": 500
-      },
-      {
-        "ItemNumber": 3,
-        "Description": "Description of Item 3",
-        "LogDate": "2018-06-01T00:00:00.000Z",
-        "LogHours": 150,
-        "IntervalMonths": null,
-        "IntervalHours": 400
-      },
-      {
         "ItemNumber": 4,
-        "Description": "Description of Item 4",
+        "Description": "Item 4",
         "LogDate": "2018-06-01T00:00:00.000Z",
-        "LogHours": 150,
-        "IntervalMonths": 6,
+        "LogHours": 330,
+        "IntervalMonths": 2,
         "IntervalHours": null
       }
     ]

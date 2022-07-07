@@ -12,9 +12,9 @@ export class DisplayAllData {
   title = 'aircraft-maintenance-tracker';
   aircraftList: any = (aircraft as any).default;
 
+  isShown = false;
+
   ngOnInit(){
-    processData(1);
-    displayJsonFile(this.aircraftList);
-    updateObject(this.aircraftList);
+
   }
 }

@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DisplayAllData } from './display-all-data.component';
+// import { DisplayAllData } from './display-all-data.component';
+import { DisplayArray } from './display-array.component';
 import { DisplayDropdown } from './display-dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayAllData,
-    DisplayDropdown
+    // DisplayAllData,
+    DisplayDropdown,
+    DisplayArray
   ],
   imports: [
     BrowserModule,

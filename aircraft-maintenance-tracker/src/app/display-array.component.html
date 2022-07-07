@@ -1,0 +1,23 @@
+<style>
+
+</style>
+
+<!-- Dropdown Menu -->
+<div style="text-align:center">
+  <h1>
+    Displaying Array for Aircraft: {{aircraft_Basic.AircraftId}}
+  </h1>
+  <ul *ngFor="let task of aircraft_Basic.Task; let i = 'index'" style="list-style-type: none;">
+    <li>
+      <!-- <h3>AircraftId: {{item.AircraftId}}, DailyHours: {{item.DailyHours}}, CurrentHours: {{item.CurrentHours}}</h3> -->
+        ItemNumber: {{task.ItemNumber}} <br>
+        Description: {{task.Description}} <br>
+        LogDate: {{task.LogDate}} <br>
+        LogHours: {{task.LogHours}} <br>
+        IntervalMonths: {{task.IntervalMonths}} <br>
+        IntervalHours: {{task.IntervalHours}} <br>
+        NextDue: {{task.NextDue}} <br>
+        ----------------------------------------------------- <br>
+    </li>
+  </ul>
+</div>
