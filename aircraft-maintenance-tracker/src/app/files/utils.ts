@@ -14,7 +14,7 @@ export function bulk_calc_NextDueDate(DB: any): any {
         for (let j=0; j< DB[i].Task.length; j++) {
             // calculate_NextDueDate()
             DB[i].Task[j].NextDueDate = formatDate(calculate_NextDueDate(DB[i].Task[j], DB[i]));
-            console.log(DB[i].Task[j].NextDueDate);
+            // console.log(DB[i].Task[j].NextDueDate);
         }
     }
     // console.log("DB post processing is: ", DB);
@@ -22,7 +22,7 @@ export function bulk_calc_NextDueDate(DB: any): any {
 }
 
 export function calculate_NextDueDate(TaskArray_in: any, Utilizations: any):any {
-    // console.log("TaskArray", TaskArray_in, "Utilizations", Utilizations);
+    console.log("TaskArray", TaskArray_in, "Utilizations", Utilizations);
     var TaskArray = TaskArray_in;
     var today = new Date(2018, 5, 19);
     var IntervalMonthsNextDueDate;
@@ -124,28 +124,32 @@ export function sort_by_NextDueDate(TaskList: any) {
     // console.log("sorted_taskArrayDate", sorted_taskArrayDate);
 
     // Sends all null values to the end of the array
+    let checkCounter=0;
     for (let n=0; n< sorted_taskArrayDate.length; n++) {
         if(sorted_taskArrayDate[n]==null) {
-            sorted_taskArrayDate.push(sorted_taskArrayDate.shift());          
+            sorted_taskArrayDate.push(sorted_taskArrayDate.shift());
+            n--;          
         }
         else {
             break;
         }
+        if(checkCounter>sorted_taskArrayDate.length){
+            break;
+        }
+        checkCounter++;
     }
-
-    // console.log("sorted_taskArrayDate", sorted_taskArrayDate);
 
     //Sort the ItemDateber based on the now sorted Date array, using indices of from the original array
     for(let k=0; k < sorted_taskArrayDate.length; k++) {
-        let index_s = taskArrayDate.indexOf(sorted_taskArrayDate[k]);
+        let index_s:number = taskArrayDate.indexOf(sorted_taskArrayDate[k]);
         sorted_taskArrayNum[k] = taskArrayNum[index_s];
+        // clears the value from the original array to eliminate the possibility of a repeat
+        taskArrayDate[index_s] = "sorted";
     }
-
-    // console.log("sorted_taskArrayNum", sorted_taskArrayNum);
 
     //Prints in the console the sorted task array
     for (let m = 0; m < sorted_taskArrayDate.length; m ++) {
-        // console.log("Item Number: ", sorted_taskArrayNum[m], "NextDueDate:", sorted_taskArrayDate[m]);
+        console.log("Item Number: ", sorted_taskArrayNum[m], "NextDueDate:", sorted_taskArrayDate[m]);
     }
 
     var final_Object = [];
@@ -181,10 +185,31 @@ export function API_GET_TaskArray_by_AircraftID(i: number): any {
     // console.log("API GET Request to return the array of objects: ", aircraftList[i].Task);
     // console.log("wholeDB[i]", wholeDB[i]);
 
+    let util_array = [];
+    util_array.push(wholeDB[i].DailyHours);
+    util_array.push(wholeDB[i].CurrentHours);
+
     // Note, NextDueDate bulk created at main
     // calculate_NextDueDate(wholeDB[i].Task, wholeDB[i]);
-
+    console.log("API called to GET Utilizations with Aircraft id: ", i+1);
+    console.log("Utilization Array is: ", util_array);
+    console.log("");
+    console.log("API called to GET Tasks Array with Aircraft id: ", i+1);
+    console.log("Tasks Array is: ", wholeDB[i].Task);
+    console.log("");
     return wholeDB[i];
+}
+
+export function API_POST_Update_DB(db: any):void {
+    var newDB: {[k: string]: any} = {};
+    let keyString = "0";
+    for (let i=0; i<db.length; i++) {
+        console.log("db[i]: ", db[i]);
+        keyString = i.toString();
+        // newDB.assign(db[i]);
+    }
+    console.log("newDB: ", newDB);
+    localStorage.setItem('db', JSON.stringify(newDB));
 }
 
 export function get_Current_Aircraft_id(): any {
@@ -199,4 +224,13 @@ export function get_Current_Display(i: string): any {
     }else {
         return false;
     }
+}
+
+export function API_GET_ALL():any {
+    let object = JSON.parse(localStorage.getItem('db') || "");
+    let newArray = [];
+    for (let y=0; y<object.length; y++){
+        newArray.push(object[y]);
+    }
+    return newArray;
 }

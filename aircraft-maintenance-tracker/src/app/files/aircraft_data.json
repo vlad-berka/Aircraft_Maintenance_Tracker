@@ -76,5 +76,43 @@
         "IntervalHours": null
       }
     ]
+  },{
+    "AircraftId": 3,
+    "DailyHours": 1.5,
+    "CurrentHours": 200,
+    "Task": [
+      {
+        "ItemNumber": 1,
+        "Description": "Item 1",
+        "LogDate": "2018-04-07T00:00:00.000Z",
+        "LogHours": null,
+        "IntervalMonths": null,
+        "IntervalHours": null
+      },
+      {
+        "ItemNumber": 2,
+        "Description": "Item 2",
+        "LogDate": "2018-04-07T00:00:00.000Z",
+        "LogHours": 100,
+        "IntervalMonths": 12,
+        "IntervalHours": 500
+      },
+      {
+        "ItemNumber": 3,
+        "Description": "Item 3",
+        "LogDate": "2018-06-01T00:00:00.000Z",
+        "LogHours": 150,
+        "IntervalMonths": null,
+        "IntervalHours": 400
+      },
+      {
+        "ItemNumber": 4,
+        "Description": "Item 4",
+        "LogDate": "2018-06-01T00:00:00.000Z",
+        "LogHours": 150,
+        "IntervalMonths": 6,
+        "IntervalHours": null
+      }
+    ]
   }
 ]

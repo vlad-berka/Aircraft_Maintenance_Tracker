@@ -1,91 +1,575 @@
 <style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
+  .main_container{
+    background-color: #5B507A;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: center;
+  }
+
+  .md-button {
+    padding: 10px;
+    margin: 6px 8px 6px 8px;
+    min-width: 200px;
+    border-radius: 14px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 2px black;
+    outline: none;
+    background-color: #5B618A;
+    text-shadow: 2px 2px rgb(91, 80, 122, 0.5);
+  }
+
+  .md-button:hover {
+    background-color: rgb(91, 80, 122, 0.7);
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 1px 1px black;
+    border: 1px solid white;
+  }
+
+  .dropdown_style {
+    font-size: 20px;
+  }
+
+  .main_header {
+    padding: 50px;
+    background-color: #9EADC8;
+    border-bottom: 3px grey solid;
+  }
+
+  .sub_header {
+    padding: 50px;
+    margin: 50px 10px 50px 10px;
+    margin-right: 100px;
+    background-color: #9EADC8;
+    max-width: 60vw;
+    max-height: 20vh;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px white solid;
+    box-shadow: 3px 3px 10px black;
+  }
+
+  .data_container {
+    padding: 50px;
+    margin: 50px 10px 50px 10px;
+    margin-right: 100px;
+    background-color: #9EADC8;
+    max-width: 60vw;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px white solid;
+    box-shadow: 3px 3px 10px black;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  h1 {
+    text-shadow: 2px 2px rgb(91, 80, 122, 0.5);
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+  /* Responsive Styles */
+@media screen and (max-width: 1411px){
+  .sub_header{
+    max-height: 26vh;
+  } 
+}
+
+  @media screen and (max-width: 820px) {
+    .main_container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .sub_header {
+      margin-right: 10px;
+    }
+    .data_container {
+      margin-right: 10px;
+      margin-top: 0;
+    }
+  }
 </style>
 
-<!-- Dropdown Menu -->
-<div style="text-align:center">
-  <h1>
-    Select an Aircraft:
-  </h1>
+  <div style="text-align:center" class="main_header">
+    <p style="font-size: 48px; text-decoration: underline;">Aircraft Overview Interface</p>
+  </div>
 
-  <span>Aircraft ID No. </span>
-  <select #dropdown (change)="onSelected()" name="aircraft-dropdown" id="#">
-    <option *ngFor="let item of aircraftList" id={{item.AircraftId}}> {{item.AircraftId}} </option>
-  </select>
+<div class="main_container">
+  <!-- Dropdown Menu -->
+  <div style="text-align:center" class="sub_header">
+    <h2>
+      Select an Aircraft:
 
-  <section>
-    <div class="example-button-row" >
+    <span class="dropdown_style">Aircraft ID No. </span>
+    <select #dropdown (change)="onSelected()" name="aircraft-dropdown" id="#" class="dropdown_style" style="width: 70px; text-align: center;">
+      <!-- <option selected disabled id="1" class="dropdown_style"></option> -->
+      <option *ngFor="let item of aircraftList" id={{item.AircraftId}} class="dropdown_style"> {{item.AircraftId}} </option>
+    </select>
+  </h2>
+
+    <section>
+      <div class="example-button-row" style="flex-direction: column">
+        <br>
+        <button class="md-button" (click)="btn_handler($event)" id="1">Utilizations</button>
+        <button class="md-button" (click)="btn_handler($event)" id="2">Show Tasks</button>
+        <br>
+        <button class="md-button" (click)="btn_handler($event)" id="3">Sorted Due Dates</button>
+        <button class="md-button" (click)="btn_handler($event)" id="4">ALL Data</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Display Single Utilizations -->
+  <div *ngIf = "isShown_Util" style="text-align:center; align-items: center;" class="data_container">
+    <h1>
+      Displaying Utilization Data for:
+    </h1>
+    <br>
+    <h2 style="text-decoration: underline; padding-bottom: 5px">Aircraft ID No: {{aircraft_Basic.AircraftId}}</h2>
+    <table style="text-align:left; margin: auto">
+      <tr>
+        <th style="font-weight: bold">DailyHours: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{aircraft_Basic.DailyHours}}</th>
+      </tr>
+      <tr>
+        <th style="font-weight: bold">CurrentHours: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{aircraft_Basic.CurrentHours}}</th>
+      </tr>
+    </table>
+    <br>
+          <!-- Update form for Utilizations -->
+    <h3 style="text-decoration: underline; padding-bottom: 5px">Update Form:</h3>
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <p style="font-weight: bold">Daily Hours:
+          <input type = "text" name = "new_DailyHours" placeholder = "New Daily Hours" formControlName="new_DailyHours" >
+          <br><br>
+        </p>
+        <p style="font-weight: bold">Current Hours:
+          <input type = "text" name = "new_CurrentHours" placeholder = "New Current Hours" formControlName="new_CurrentHours" >
+          <br><br>
+        </p>
+        <input type = "submit" value = "Update">
+      </form> 
+  </div>
+
+  <!-- Display Single Array -->
+  <div *ngIf = "isShown_Array" style="text-align:center" class="data_container">
+    <h1>
+      Displaying TaskList for: 
+    </h1>
+    <br>
+    <h2 style="text-decoration: underline">Aircraft ID No: {{aircraft_Basic.AircraftId}}</h2>
+    <br>
+    <table style="text-align:left; margin: auto" *ngFor="let task of aircraft_Basic.Task; let i = 'index'">
+      <tr>
+        <th style="min-width: 150px; font-weight: bold">ItemNumber: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{task.ItemNumber}}</th>
+      </tr>
+      <tr>
+        <th style="min-width: 150px;font-weight: bold">Description: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{task.Description}}</th>
+      </tr>
+      <tr>
+        <th style="min-width: 150px;font-weight: bold">LogDate: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{task.LogDate}}</th>
+      </tr>
+      <tr>
+        <th style="min-width: 150px;font-weight: bold">LogHours: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{task.LogHours}}</th>
+      </tr>
+      <tr>
+        <th style="min-width: 150px;font-weight: bold">IntervalMonths: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{task.IntervalMonths}}</th>
+      </tr>
+      <tr>
+        <th style="min-width: 150px;font-weight: bold">IntervalHours: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal">{{task.IntervalHours}}</th>
+      </tr>
+      <tr>
+        <th style="min-width: 150px;font-weight: bold">NextDueDate: </th>
+        <th style="min-width: 50px; text-align: right; font-weight: normal;">{{task.NextDueDate}}</th>
+      </tr>
       <br>
-      <button (click)="btn_handler($event)" id="1">Show Utilizations</button>
-      <button (click)="btn_handler($event)" id="2">Get Task Array</button>
-      <button (click)="btn_handler($event)" id="3">Display Sorted Tasks</button>
-      <button (click)="btn_handler($event)" id="4">Display ALL Data</button>
-    </div>
-  </section>
-</div>
+    </table>
+    <!-- <ul *ngFor="let task of aircraft_Basic.Task; let i = 'index'" style="list-style-type: none;">
+      <li>
+          ItemNumber: {{task.ItemNumber}} <br>
+          Description: {{task.Description}} <br>
+          LogDate: {{task.LogDate}} <br>
+          LogHours: {{task.LogHours}} <br>
+          IntervalMonths: {{task.IntervalMonths}} <br>
+          IntervalHours: {{task.IntervalHours}} <br>
+          NextDueDate: {{task.NextDueDate}} <br>
+          ----------------------------------------------------- <br>
+      </li>
+    </ul> -->
+  </div>
 
-<!-- Display Single Utilizations -->
-<div *ngIf = "isShown_Util" style="text-align:center">
-  <h1>
-    Displaying Utilization Data for Aircraft: {{aircraft_Basic.AircraftId}}
-  </h1>
-        AircraftId: {{aircraft_Basic.AircraftId}} <br>
-        DailyHours: {{aircraft_Basic.DailyHours}} <br>
-        CurrentHours: {{aircraft_Basic.CurrentHours}} <br>
-        ----------------------------------------------------- <br>
-</div>
+  <!-- Display Sorted Tasks -->
+  <div *ngIf = "isShown_SortedTasks" style="text-align:center" class="data_container">
+    <h1>
+      Displaying Sorted Tasks for: 
+    </h1>
+    <br>
+    <h2 style="text-decoration: underline; padding-bottom: 5px">Aircraft ID No: {{aircraft_Basic.AircraftId}}</h2>
+    <table style="text-align:left; margin: auto" *ngFor="let task of sorted_Tasks; let i = 'index'">
+      <tr>
+        <th style="min-width: 40px; font-weight: bold">ItemNumber: </th>
+        <th style="min-width: 20px; text-align: right; font-weight: normal; padding-right: 40px">{{task.IN}}</th>
+        <th style="min-width: 85px; font-weight: bold">NextDueDate: </th>
+        <th style="min-width: 85px; text-align: right; font-weight: normal">{{task.NDD}}</th>
+      </tr>
+    </table>
+    <!-- <ul *ngFor="let task of sorted_Tasks; let i = 'index'" style="list-style-type: none;">
+      <li>
+        <h3>AircraftId: {{item.AircraftId}}, DailyHours: {{item.DailyHours}}, CurrentHours: {{item.CurrentHours}}</h3>
+          ItemNumber: {{task.IN}} NextDueDate: {{task.NDD}} <br>
+          ----------------------------------------------------- <br>
+      </li>
+    </ul> -->
+  </div>
 
-<!-- Display Single Array -->
-<div *ngIf = "isShown_Array" style="text-align:center">
-  <h1>
-    Displaying TaskList for Aircraft: {{aircraft_Basic.AircraftId}}
-  </h1>
-  <ul *ngFor="let task of aircraft_Basic.Task; let i = 'index'" style="list-style-type: none;">
-    <li>
-      <!-- <h3>AircraftId: {{item.AircraftId}}, DailyHours: {{item.DailyHours}}, CurrentHours: {{item.CurrentHours}}</h3> -->
-        ItemNumber: {{task.ItemNumber}} <br>
-        Description: {{task.Description}} <br>
-        LogDate: {{task.LogDate}} <br>
-        LogHours: {{task.LogHours}} <br>
-        IntervalMonths: {{task.IntervalMonths}} <br>
-        IntervalHours: {{task.IntervalHours}} <br>
-        NextDueDate: {{task.NextDueDate}} <br>
-        ----------------------------------------------------- <br>
-    </li>
-  </ul>
-</div>
-
-<!-- Display Sorted Tasks -->
-<div *ngIf = "isShown_SortedTasks" style="text-align:center">
-  <h1>
-    Displaying Sorted Tasks for Aircraft: {{aircraft_Basic.AircraftId}}
-  </h1>
-  <ul *ngFor="let task of sorted_Tasks; let i = 'index'" style="list-style-type: none;">
-    <li>
-      <!-- <h3>AircraftId: {{item.AircraftId}}, DailyHours: {{item.DailyHours}}, CurrentHours: {{item.CurrentHours}}</h3> -->
-        ItemNumber: {{task.IN}} NextDueDate: {{task.NDD}} <br>
-        ----------------------------------------------------- <br>
-    </li>
-  </ul>
-</div>
-
-<!-- Showing All Aircraft Data -->
-<div *ngIf = "isShown_ALL" style="text-align:center" id="Util_div">
-  <h1>
-    Displaying ALL DATA from JSON File:
-  </h1>
-  <ul *ngFor="let item of aircraftList" style="list-style-type: none;">
-    <li>
-      <h3>AircraftId: {{item.AircraftId}}, DailyHours: {{item.DailyHours}}, CurrentHours: {{item.CurrentHours}}</h3>
-      <ul *ngFor="let task of item.Task; let i = 'index'">
-        ItemNumber: {{item.Task[i].ItemNumber}} <br>
-        Description: {{item.Task[i].Description}} <br>
-        LogDate: {{item.Task[i].LogDate}} <br>
-        LogHours: {{item.Task[i].LogHours}} <br>
-        IntervalMonths: {{item.Task[i].IntervalMonths}} <br>
-        IntervalHours: {{item.Task[i].IntervalHours}} <br>
-        ----------------------------------------------------- <br>
+  <!-- Showing All Aircraft Data -->
+  <div *ngIf = "isShown_ALL" style="text-align:center" id="Util_div" class="data_container">
+    <h1>
+      Displaying ALL DATA from Database:
+    </h1>
+    <div >
+      <ul *ngFor="let item of aircraftList" style="list-style-type: none; text-align: left;">
+        <li>
+          <br>
+          <h2 style="text-align: right">AircraftId: {{item.AircraftId}}</h2> 
+          <hr style="border: solid 1px black;">
+          <h3 style="text-decoration: underline;">Utilizations:</h3>
+          <table style="text-align:left">
+            <tr>
+              <th style="min-width: 150px; font-weight: bold">DailyHours: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.DailyHours}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px; font-weight: bold">CurrentHours: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.CurrentHours}}</th>
+            </tr>
+          </table>
+          <br>
+          <h3 style="text-decoration: underline;">Task List:</h3>
+          <table style="text-align:left" *ngFor="let task of item.Task; let i = 'index'">
+            <tr>
+              <th style="min-width: 150px; font-weight: bold">ItemNumber: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.Task[i].ItemNumber}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px;font-weight: bold">Description: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.Task[i].Description}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px;font-weight: bold">LogDate: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.Task[i].LogDate}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px;font-weight: bold">LogHours: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.Task[i].LogHours}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px;font-weight: bold">IntervalMonths: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.Task[i].IntervalMonths}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px;font-weight: bold">IntervalHours: </th>
+              <th style="min-width: 180px; text-align: right; font-weight: normal">{{item.Task[i].IntervalHours}}</th>
+            </tr>
+            <tr>
+              <th style="min-width: 150px;font-weight: bold">NextDueDate: </th>
+              <th style="min-width: 180px0px; text-align: right; font-weight: normal;">{{item.Task[i].NextDueDate}}</th>
+            </tr>
+            <br>
+          </table>
+          <!-- <ul *ngFor="let task of item.Task; let i = 'index'">
+            ItemNumber: {{item.Task[i].ItemNumber}} <br>
+            Description: {{item.Task[i].Description}} <br>
+            LogDate: {{item.Task[i].LogDate}} <br>
+            LogHours: {{item.Task[i].LogHours}} <br>
+            IntervalMonths: {{item.Task[i].IntervalMonths}} <br>
+            IntervalHours: {{item.Task[i].IntervalHours}} <br>
+            NextDueDate: {{item.Task[i].NextDueDate}} <br>
+            ----------------------------------------------------- <br>
+          </ul> -->
+        </li>
       </ul>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
