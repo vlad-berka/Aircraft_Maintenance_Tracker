@@ -22,7 +22,7 @@ export function bulk_calc_NextDueDate(DB: any): any {
 }
 
 export function calculate_NextDueDate(TaskArray_in: any, Utilizations: any):any {
-    console.log("TaskArray", TaskArray_in, "Utilizations", Utilizations);
+    // console.log("TaskArray", TaskArray_in, "Utilizations", Utilizations);
     var TaskArray = TaskArray_in;
     var today = new Date(2018, 5, 19);
     var IntervalMonthsNextDueDate;
@@ -149,7 +149,7 @@ export function sort_by_NextDueDate(TaskList: any) {
 
     //Prints in the console the sorted task array
     for (let m = 0; m < sorted_taskArrayDate.length; m ++) {
-        console.log("Item Number: ", sorted_taskArrayNum[m], "NextDueDate:", sorted_taskArrayDate[m]);
+        // console.log("Item Number: ", sorted_taskArrayNum[m], "NextDueDate:", sorted_taskArrayDate[m]);
     }
 
     var final_Object = [];
@@ -232,5 +232,8 @@ export function API_GET_ALL():any {
     for (let y=0; y<object.length; y++){
         newArray.push(object[y]);
     }
+    console.log("API called to GET ALL data from DB")
+    console.log(newArray);
+    console.log("");
     return newArray;
 }
